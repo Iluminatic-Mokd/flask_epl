@@ -14,7 +14,7 @@
 
 # register_blueprints(app)
 
-from flask import Flask
+from flask import Flask, app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
@@ -25,10 +25,10 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = 'sdlflkposkrofkpsldas'
-  
-    app.config['SQLALCHEMY_DATABASE_URI'] = (
-        'mysql+pymysql://root:1234@localhost:3306/flask_epl'
-    )
+    
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///epl.db'
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
