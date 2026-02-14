@@ -2,6 +2,7 @@
   <tr>
     <td>{{loop.index}}</td>
     <td>{{player.name}}</td>
+    <td>{{player.goal if player.goal is not none else 0}}</td>
     <td>{{player.clean_sheets if player.clean_sheets is not none else '-'}}</td>
     <td>
       <a href="{{url_for('players.info_player', id=player.id)}}" class="btn btn-outline-info btn-sm">
