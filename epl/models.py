@@ -24,6 +24,7 @@ class Player(db.Model):
     nationality: Mapped[str] = mapped_column(String(50), nullable=False)
     goal: Mapped[int] = mapped_column(Integer, nullable=True, default=0)
     squad_no: Mapped[int] = mapped_column(Integer, nullable=True)
+    clean_sheets: Mapped[int] = mapped_column(Integer, nullable=True)
     img: Mapped[str] = mapped_column(String(200), nullable=True)
     club_id: Mapped[int] = mapped_column(Integer, ForeignKey('clubs.id'))
     

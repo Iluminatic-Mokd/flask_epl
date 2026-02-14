@@ -10,7 +10,7 @@
     <hr>
     <div class="row">
       <div class="col">
-        <a href="{{url_for('new_player')}}" class="btn btn-outline-success">
+        <a href="{{url_for('players.new_player')}}" class="btn btn-outline-success">
           <i class="bi bi-folder-plus"></i>
           Add New Player
         </a>
@@ -19,7 +19,7 @@
         <form method="post"
         hx-target="#result"
         hx-trigger="submit"
-        hx-post="{{url_for('search_player')}}"
+        hx-post="{{url_for('players.search_player')}}"
         hx-on::after-request="if(event.detail.successful) this.reset()">
           <div class="input-group mb-3">
             <input name="player_name" type="text" class="form-control" placeholder="Search by Player's name">
@@ -34,6 +34,7 @@
       <thead>
         <th>#</th>
         <th>Player Name</th>
+        <th>Clean Sheets</th>
         <th>Action</th>
       </thead>
       <tbody id="result">
@@ -41,8 +42,9 @@
           <tr>
             <td>{{loop.index}}</td>
             <td>{{player.name}}</td>
+            <td>{{player.clean_sheets if player.clean_sheets is not none else '-'}}</td>
             <td>
-              <a href="#" class="btn btn-outline-info btn-sm">
+              <a href="{{url_for('players.info_player', id=player.id)}}" class="btn btn-outline-info btn-sm">
                 <i class="bi bi-info-circle"></i>
               </a>
             </td>
